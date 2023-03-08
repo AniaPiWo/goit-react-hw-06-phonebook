@@ -1,8 +1,6 @@
-export const FilterActions = {
-  SET_NAME: 'filters/setNameFilter',
-};
+import { createAction } from '@reduxjs/toolkit';
 
-export const setNameFilterAction = name => ({
-  type: FilterActions.SET_NAME,
-  payload: { name },
-});
+export const setNameFilterAction = createAction(
+  'filters/setNameFilter',
+  name => ({ payload: { name } })
+);
