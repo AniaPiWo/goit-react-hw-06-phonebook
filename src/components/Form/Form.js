@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addContactAction } from 'redux/contacts/contacts.actions';
+import { addContactAction } from 'redux/contacts/contacts.slice';
 import css from './Form.module.css';
 
 export const Form = () => {
@@ -12,7 +12,6 @@ export const Form = () => {
     const latestId = Math.max(...contacts.map(contact => contact.id));
     const nameValue = form.elements.text.value;
     const phoneValue = form.elements.phone.value;
-    console.log(form.elements.text.value);
     dispatch(addContactAction(latestId + 1, nameValue, phoneValue));
     form.reset();
   };

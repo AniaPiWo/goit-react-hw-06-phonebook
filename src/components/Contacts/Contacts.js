@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContactAction } from 'redux/contacts/contacts.actions';
+import { deleteContactAction } from 'redux/contacts/contacts.slice';
 import css from './Contacts.module.css';
 
 export const Contacts = () => {
@@ -10,8 +10,6 @@ export const Contacts = () => {
   const visibleNames = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filterName.toLowerCase())
   );
-
-  console.log(visibleNames);
 
   const onContactDelete = id => {
     dispatch(deleteContactAction(id));

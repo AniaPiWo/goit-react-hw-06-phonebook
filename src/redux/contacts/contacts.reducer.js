@@ -1,3 +1,6 @@
+import { addContactAction, deleteContactAction } from './contacts.actions';
+import { createReducer } from '@reduxjs/toolkit';
+
 const initialContactsState = [
   { id: 1, name: 'Harry Potter', phone: '459-12-56' },
   { id: 2, name: 'Hermione Granger', phone: '443-89-12' },
@@ -6,17 +9,29 @@ const initialContactsState = [
   { id: 5, name: 'Severus Snape', phone: '227-91-26' },
 ];
 
+export const contactsReducer = createReducer(initialContactsState, {
+  [addContactAction]: (state, action) => {
+    state.push(action.payload);
+  },
+  [deleteContactAction]: (state, action) => {
+    const { id } = action.payload;
+    return state.filter(contact => contact.id !== id);
+  },
+});
+
+/* 
+ver 2
 export const contactsReducer = (state = initialContactsState, action) => {
   switch (action.type) {
-    case 'contacts/addContact': {
+    case addContactAction.type: {
       const { id, name, phone } = action.payload;
       return state.concat({ id, name, phone });
     }
-    case 'contacts/deleteContact': {
+    case deleteContactAction.type: {
       const { id } = action.payload;
       return state.filter(contact => contact.id !== id);
     }
     default:
       return state;
   }
-};
+}; */
