@@ -6,7 +6,7 @@ export const Contacts = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(store => store.contacts);
   const filterName = useSelector(store => store.filters.name);
-
+  console.log(filterName);
   const visibleNames = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filterName.toLowerCase())
   );
