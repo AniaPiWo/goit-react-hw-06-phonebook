@@ -8,7 +8,7 @@ export const Filter = () => {
   const handleChange = event => {
     const name = event.target.value;
     console.log(name);
-    dispatch(setNameFilterAction(name));
+    dispatch(setNameFilterAction({ name }));
   };
 
   return (
